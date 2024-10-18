@@ -27,5 +27,5 @@ This app helped me reinforce my knowledge of state management in React Native us
 
 Check out these other similar projects in my portfolio:
 
-- Password Generator App: [(Add your link here)](https://github.com/JMarte03/password-generator)
-- Basic styling with React Native: [(Add your link here)](https://github.com/JMarte03/basic-styling-react-native)
+- Password Generator App: https://github.com/JMarte03/password-generator
+- Basic styling with React Native: https://github.com/JMarte03/basic-styling-react-native
