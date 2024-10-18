@@ -1,118 +1,60 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { contrastText } from './contrast'
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+export default function App() {
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  const [randomBackground, setRandomBackground] = useState("#ffffff")
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+  const generateBgColor = () => {
+    const hexRange = "0123456789ABCDEF"
+    let color = "#"
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+    for (let i = 0; i < 6; i++){
+      color += hexRange[Math.floor(Math.random() * 16)]
+    }
+    setRandomBackground(color)
+  }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const textColor = contrastText(randomBackground);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+    <>
+      <StatusBar backgroundColor={randomBackground} />
+      <View style={[styles.container, {backgroundColor: randomBackground}]}>
+        <TouchableOpacity onPress={generateBgColor}>
+          <View style={styles.actionBtn}>
+            <Text style={styles.actionBtnTxt}>Press me</Text>
+          </View>
+        </TouchableOpacity>
+        <Text style={[styles.colorTxt, {color: textColor}]} selectable>{randomBackground}</Text>
+      </View>
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 15
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  actionBtn: {
+    borderRadius: 8,
+    backgroundColor: "#2B2B2B",
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    opacity: 0.9
   },
-  sectionDescription: {
-    marginTop: 8,
+  actionBtnTxt: {
+    fontWeight: '300',
+    fontSize: 20,
+    color: "white",
+    textTransform: "uppercase",
+    letterSpacing: 2,
+  },
+  colorTxt: { 
     fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+  }
+})
