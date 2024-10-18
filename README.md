@@ -10,8 +10,8 @@ This is a React Native app where users can change the background color by pressi
 
 This app is built with React Native and leverages the useState hook to manage and display dynamic state changes for the background color:
 
-**React Native**: For the overall UI and functionality.
-**useState Hook**: To manage the background color and display the hex code dynamically.
+- **React Native**: For the overall UI and functionality.
+- **useState Hook**: To manage the background color and display the hex code dynamically.
 
 ### Key Features:
 
@@ -25,7 +25,7 @@ This app helped me reinforce my knowledge of state management in React Native us
 
 ## Other projects: 
 
-Check out these other projects in my portfolio:
+Check out these other similar projects in my portfolio:
 
-Password Generator App: (Add your link here)
-Basic styling with React Native: (Add your link here)
+- Password Generator App: [(Add your link here)](https://github.com/JMarte03/password-generator)
+- Basic styling with React Native: [(Add your link here)](https://github.com/JMarte03/basic-styling-react-native)
